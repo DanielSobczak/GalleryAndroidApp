@@ -15,7 +15,7 @@ public class FlickrAPIModule {
 
     @Provides
     @Singleton
-    FlickrApi provideFlickApi() {
+    public FlickrApi provideFlickApi() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(FlickrApi.BASE_URL)
                 .client(new OkHttpClient())
