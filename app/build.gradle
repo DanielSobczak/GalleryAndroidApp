@@ -56,6 +56,8 @@ dependencies {
     ext.fFakerVersion = '0.10'
     ext.rxBindingVersion = '0.4.0'
     ext.frescoVersion = '1.2.0'
+    ext.retrofitVersion = '2.3.0'
+    ext.autoValueVersion = '1.4.1'
 
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -77,6 +79,10 @@ dependencies {
     compile "com.jakewharton.timber:timber:$timberVersion"
     compile "com.facebook.fresco:fresco:$frescoVersion"
     compile "com.facebook.fresco:imagepipeline-okhttp3:$frescoVersion"
+    compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    compile "com.google.auto.value:auto-value:$autoValueVersion"
 
     testCompile "junit:junit:$junitVersion"
     testCompile "org.mockito:mockito-core:$mockitoVersion"
