@@ -8,7 +8,7 @@ import com.sample.galleryapp.gallery.views.GalleryFragment;
 import dagger.Component;
 
 @PerActivity
-@Component(dependencies = ApplicationComponent.class, modules = {ActivityModule.class})
+@Component(dependencies = ApplicationComponent.class, modules = {ActivityModule.class, GalleryModule.class})
 public interface GalleryComponent {
     void inject(GalleryFragment galleryFragment);
 }

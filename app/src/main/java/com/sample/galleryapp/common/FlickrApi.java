@@ -1,4 +1,4 @@
-package com.sample.galleryapp.gallery.services;
+package com.sample.galleryapp.common;
 
 import com.sample.galleryapp.gallery.models.ImageEntityWrapper;
 

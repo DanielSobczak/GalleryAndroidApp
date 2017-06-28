@@ -1,6 +1,7 @@
 package com.sample.galleryapp.gallery.services;
 
 import com.github.javafaker.Faker;
+import com.sample.galleryapp.common.FlickrApi;
 import com.sample.galleryapp.gallery.models.Image;
 import com.sample.galleryapp.gallery.models.ImageEntity;
 import com.sample.galleryapp.gallery.models.ImageEntityWrapper;
