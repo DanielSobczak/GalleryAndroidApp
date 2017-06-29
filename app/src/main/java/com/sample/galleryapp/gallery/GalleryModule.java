@@ -14,4 +14,15 @@ public class GalleryModule {
     ImageProvider providesImageProvider(final FlickrApi flickrApi) {
         return new FlickrImageService(flickrApi);
     }
+
+    @Provides
+    GalleryCellImageMapper providesGalleryCellImageMapper() {
+        return new GalleryCellImageMapper();
+    }
+
+    @Provides
+    GalleryPresenter providesGalleryPresenter(final GetGalleryImages getGalleryImages) {
+        return new GalleryPresenter(getGalleryImages);
+    }
+
 }
