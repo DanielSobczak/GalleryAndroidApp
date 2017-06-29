@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GalleryApp</string>
+    <string name="gallery_general_error_message">Something went wrong. Please try again.</string>
+    <string name="gallery_error_btn">Retry</string>
 </resources>

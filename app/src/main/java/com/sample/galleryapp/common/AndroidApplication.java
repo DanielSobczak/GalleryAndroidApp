@@ -6,11 +6,15 @@ import com.facebook.cache.disk.DiskCacheConfig;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.backends.okhttp3.OkHttpImagePipelineConfigFactory;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
+import com.sample.galleryapp.BuildConfig;
 import com.sample.galleryapp.common.di.component.ApplicationComponent;
 import com.sample.galleryapp.common.di.component.DaggerApplicationComponent;
 import com.sample.galleryapp.common.di.modules.ApplicationModule;
 
+import net.danlew.android.joda.JodaTimeAndroid;
+
 import okhttp3.OkHttpClient;
+import timber.log.Timber;
 
 
 public class AndroidApplication extends Application {
@@ -20,12 +24,20 @@ public class AndroidApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        setupLogger();
         initializeDagger();
         initializeFresco();
+        JodaTimeAndroid.init(this);
     }
 
     public ApplicationComponent getApplicationComponent() {
         return applicationComponent;
+    }
+
+    private void setupLogger() {
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree());
+        }
     }
 
     private void initializeDagger() {

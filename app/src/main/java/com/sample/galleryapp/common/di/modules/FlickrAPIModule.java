@@ -8,6 +8,7 @@ import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
@@ -19,6 +20,7 @@ public class FlickrAPIModule {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(FlickrApi.BASE_URL)
                 .client(new OkHttpClient())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
