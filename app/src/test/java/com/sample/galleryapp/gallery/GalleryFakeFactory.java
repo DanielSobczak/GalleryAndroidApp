@@ -23,11 +23,11 @@ public class GalleryFakeFactory {
 
     public static GalleryCellImage createGalleryCellImage() {
         return GalleryCellImage.builder()
-                .author(faker.book().author())
-                .imagePreviewUrl(faker.internet().image())
-                .title(faker.book().title())
-                .tags(faker.lorem().word())
-                .date(faker.date().toString())
+                .setAuthor(faker.book().author())
+                .setImagePreviewUrl(faker.internet().image())
+                .setTitle(faker.book().title())
+                .setTags(faker.lorem().word())
+                .setPublishDate(faker.date().toString())
                 .build();
     }
 

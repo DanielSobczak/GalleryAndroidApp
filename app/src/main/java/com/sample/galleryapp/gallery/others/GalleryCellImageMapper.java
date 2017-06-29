@@ -27,11 +27,11 @@ public class GalleryCellImageMapper {
 
     private GalleryCellImage mapToCellImage(final Image image) {
         return GalleryCellImage.builder()
-                .imagePreviewUrl(image.imageUrl())
-                .author(image.authorName())
-                .title(image.title())
-                .date(image.publishDate().toString(TIMESTAMP_FORMATTER))
-                .tags(formatTags(image.tags()))
+                .setImagePreviewUrl(image.imageUrl())
+                .setAuthor(image.authorName())
+                .setTitle(image.title())
+                .setPublishDate(image.publishDate().toString(TIMESTAMP_FORMATTER))
+                .setTags(formatTags(image.tags()))
                 .build();
     }
 

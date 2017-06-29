@@ -14,21 +14,21 @@ public abstract class GalleryCellImage {
 
     public abstract String title();
 
-    public abstract String date();
+    public abstract String publishDate();
 
     public abstract String tags();
 
     @AutoValue.Builder
     public abstract static class Builder {
-        public abstract Builder imagePreviewUrl(final String imagePreviewUrl);
+        public abstract Builder setImagePreviewUrl(final String imagePreviewUrl);
 
-        public abstract Builder author(final String author);
+        public abstract Builder setAuthor(final String author);
 
-        public abstract Builder title(final String title);
+        public abstract Builder setTitle(final String title);
 
-        public abstract Builder date(final String date);
+        public abstract Builder setPublishDate(final String date);
 
-        public abstract Builder tags(final String tags);
+        public abstract Builder setTags(final String tags);
 
         public abstract GalleryCellImage build();
     }

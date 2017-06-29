@@ -39,7 +39,7 @@ public class GalleryImageViewHolder extends RecyclerView.ViewHolder {
 
     public void setImageData(final GalleryCellImage galleryCellImage){
         imagePreview.setImageURI(galleryCellImage.imagePreviewUrl());
-        publishDate.setText(galleryCellImage.date());
+        publishDate.setText(galleryCellImage.publishDate());
         title.setText(galleryCellImage.title());
         author.setText(galleryCellImage.author());
         tags.setText(galleryCellImage.tags());
