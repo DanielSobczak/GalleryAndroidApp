@@ -8,8 +8,10 @@ import rx.subjects.BehaviorSubject;
 
 public class RxSearch {
 
+    private static final String EMPTY_QUERY = "";
+
     public static Observable<String> fromSearchView(@NonNull final SearchView searchView) {
-        final BehaviorSubject<String> subject = BehaviorSubject.create("");
+        final BehaviorSubject<String> subject = BehaviorSubject.create(EMPTY_QUERY);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
@@ -28,7 +30,7 @@ public class RxSearch {
             }
         });
         searchView.setOnCloseListener(() -> {
-            subject.onNext("");
+            subject.onNext(EMPTY_QUERY);
             return false;
         });
 
