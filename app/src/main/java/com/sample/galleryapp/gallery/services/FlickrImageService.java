@@ -29,10 +29,14 @@ public class FlickrImageService implements ImageProvider {
     }
 
     @Override
-    public Observable<List<Image>> getImages() {
-        return flickrApi.getImages()
+    public Observable<List<Image>> getImages(final List<String> tags) {
+        return flickrApi.getImages(createTagQuery(tags))
                 .map(ImageEntityWrapper::getItemsList)
                 .map(this::mapList);
+    }
+
+    private String createTagQuery(final List<String> tags) {
+        return TextUtils.join(",", tags);
     }
 
     private List<Image> mapList(final List<ImageEntity> imageEntities) {

@@ -1,9 +1,10 @@
-package com.sample.galleryapp.gallery.views;
+package com.sample.galleryapp.gallery.others;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
 import com.sample.galleryapp.gallery.models.GalleryCellImage;
+import com.sample.galleryapp.gallery.views.GalleryImageViewHolder;
 
 import java.util.ArrayList;
 import java.util.Collections;

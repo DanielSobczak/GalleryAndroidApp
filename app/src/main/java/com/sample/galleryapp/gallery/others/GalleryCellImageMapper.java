@@ -1,4 +1,4 @@
-package com.sample.galleryapp.gallery;
+package com.sample.galleryapp.gallery.others;
 
 import com.sample.galleryapp.gallery.models.GalleryCellImage;
 import com.sample.galleryapp.gallery.models.Image;
@@ -17,7 +17,7 @@ public class GalleryCellImageMapper {
     private static final String TAG_DELIMETER = " ";
     private static final String EMPTY_TAG = "";
 
-    List<GalleryCellImage> mapToGalleryCellModel(final List<Image> images) {
+    public List<GalleryCellImage> mapToGalleryCellModel(final List<Image> images) {
         List<GalleryCellImage> result = new ArrayList<GalleryCellImage>(images.size());
         for (final Image image : images) {
             result.add(mapToCellImage(image));
