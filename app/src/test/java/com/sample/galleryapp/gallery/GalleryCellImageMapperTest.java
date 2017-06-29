@@ -3,6 +3,7 @@ package com.sample.galleryapp.gallery;
 import com.github.javafaker.Faker;
 import com.sample.galleryapp.gallery.models.GalleryCellImage;
 import com.sample.galleryapp.gallery.models.Image;
+import com.sample.galleryapp.gallery.others.GalleryCellImageMapper;
 
 import org.joda.time.DateTime;
 import org.junit.Before;

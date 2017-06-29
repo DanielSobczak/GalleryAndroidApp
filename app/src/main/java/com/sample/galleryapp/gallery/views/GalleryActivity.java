@@ -27,4 +27,5 @@ public class GalleryActivity extends BaseActivity implements HasComponent<Galler
                 .applicationComponent(getApplicationComponent())
                 .build();
     }
+
 }

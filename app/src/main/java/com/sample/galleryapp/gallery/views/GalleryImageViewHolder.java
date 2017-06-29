@@ -14,7 +14,7 @@ import com.sample.galleryapp.gallery.models.GalleryCellImage;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-class GalleryImageViewHolder extends RecyclerView.ViewHolder {
+public class GalleryImageViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.img_preview)
     SimpleDraweeView imagePreview;

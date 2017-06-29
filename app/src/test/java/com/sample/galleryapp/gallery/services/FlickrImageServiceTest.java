@@ -13,10 +13,12 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import rx.Observable;
@@ -24,6 +26,8 @@ import rx.observers.AssertableSubscriber;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.verify;
 
 public class FlickrImageServiceTest extends RobolectricTest {
     private static final String TIMESTAMP_FORMAT = "yyyy-MM-dd'T'HH:mm:ssZ";
@@ -45,8 +49,8 @@ public class FlickrImageServiceTest extends RobolectricTest {
     public void testImagesReceivedFromApiAreParsed() throws Exception {
         ImageEntity imageEntity = createEntity("2017-06-28T21:03:33Z");
         List<ImageEntity> imageEntities = Arrays.asList(imageEntity);
-        given(mockFlickrApi.getImages()).willReturn(Observable.just(ImageEntityWrapper.create(imageEntities)));
-        AssertableSubscriber<List<Image>> assertableSubscriber = sut.getImages().test();
+        given(mockFlickrApi.getImages(anyString())).willReturn(Observable.just(ImageEntityWrapper.create(imageEntities)));
+        AssertableSubscriber<List<Image>> assertableSubscriber = sut.getImages(Collections.emptyList()).test();
         List<List<Image>> onNextEvents = assertableSubscriber.getOnNextEvents();
         assertableSubscriber.assertValueCount(1);
         Image actualImage = onNextEvents.get(0).get(0);
@@ -65,10 +69,20 @@ public class FlickrImageServiceTest extends RobolectricTest {
     @Test
     public void testReceivingExactSameNumberOfObjectsAfterParsing() throws Exception {
         List<ImageEntity> imageEntities = Arrays.asList(createEntity(), createEntity(), createEntity(), createEntity());
-        given(mockFlickrApi.getImages()).willReturn(Observable.just(ImageEntityWrapper.create(imageEntities)));
-        AssertableSubscriber<List<Image>> assertableSubscriber = sut.getImages().test();
+        given(mockFlickrApi.getImages(anyString())).willReturn(Observable.just(ImageEntityWrapper.create(imageEntities)));
+        AssertableSubscriber<List<Image>> assertableSubscriber = sut.getImages(Collections.emptyList()).test();
         List<List<Image>> onNextEvents = assertableSubscriber.getOnNextEvents();
         assertThat(onNextEvents.get(0)).hasSameSizeAs(imageEntities);
+    }
+
+    @Test
+    public void testTagParamIsParsedCorrectly() throws Exception {
+        List<ImageEntity> emptyList = Collections.emptyList();
+        given(mockFlickrApi.getImages(anyString())).willReturn(Observable.just(ImageEntityWrapper.create(emptyList)));
+        sut.getImages(Arrays.asList("a", "z", "b"));
+        ArgumentCaptor<String> stringQueryCaptor = ArgumentCaptor.forClass(String.class);
+        verify(mockFlickrApi).getImages(stringQueryCaptor.capture());
+        assertThat(stringQueryCaptor.getValue()).isEqualTo("a,z,b");
     }
 
     private ImageEntity createEntity() {

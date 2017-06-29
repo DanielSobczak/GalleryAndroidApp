@@ -7,5 +7,5 @@ import java.util.List;
 import rx.Observable;
 
 public interface ImageProvider {
-    Observable<List<Image>> getImages();
+    Observable<List<Image>> getImages(final List<String> tags);
 }

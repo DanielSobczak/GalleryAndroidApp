@@ -1,6 +1,7 @@
 package com.sample.galleryapp.gallery;
 
 import com.sample.galleryapp.common.FlickrApi;
+import com.sample.galleryapp.gallery.others.GalleryCellImageMapper;
 import com.sample.galleryapp.gallery.services.FlickrImageService;
 import com.sample.galleryapp.gallery.services.ImageProvider;
 

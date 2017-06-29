@@ -16,6 +16,7 @@ public class GalleryPresenter implements Presenter {
     private final GetGalleryImages getGalleryImages;
 
     private GalleryView view;
+    private String lastQuery;
 
     public GalleryPresenter(final GetGalleryImages getGalleryImages) {
         this.getGalleryImages = getGalleryImages;
@@ -42,13 +43,13 @@ public class GalleryPresenter implements Presenter {
     }
 
     public void initialise() {
-        fetchImages();
+        fetchImages(null);
     }
 
-    private void fetchImages() {
+    private void fetchImages(final String query) {
         getGalleryImages.unsubscribe();
         view.showLoading();
-        getGalleryImages.execute(new ImagesSubscriber(), null);
+        getGalleryImages.execute(new ImagesSubscriber(), new GetGalleryImages.GetGalleryImagesParams(query));
     }
 
     private void onImagesReceived(final List<GalleryCellImage> images) {
@@ -60,7 +61,12 @@ public class GalleryPresenter implements Presenter {
     }
 
     public void onRetryClicked() {
-        fetchImages();
+        fetchImages(lastQuery);
+    }
+
+    public void onQueryChanged(final String query) {
+        lastQuery = query;
+        fetchImages(query);
     }
 
     @RxLogSubscriber
