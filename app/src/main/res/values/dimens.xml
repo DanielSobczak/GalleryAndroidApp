@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="circle_loading_progress_size">48dp</dimen>
+    <dimen name="gallery_image_preview_size">60dp</dimen>
+    <dimen name="text_size_big">24sp</dimen>
+    <dimen name="text_size_normal">16sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="gallery_cell_internal_horizontal_padding">16dp</dimen>
+    <dimen name="cell_internal_vertical_padding">8dp</dimen>
 </resources>

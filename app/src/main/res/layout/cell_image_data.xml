@@ -4,38 +4,41 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:padding="16dp">
+             android:paddingBottom="8dp"
+             android:paddingLeft="4dp"
+             android:paddingRight="4dp">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
+        custom:cardUseCompatPadding="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            >
+            android:paddingBottom="@dimen/cell_internal_vertical_padding"
+            android:paddingLeft="@dimen/gallery_cell_internal_horizontal_padding"
+            android:paddingRight="@dimen/gallery_cell_internal_horizontal_padding"
+            android:paddingTop="@dimen/cell_internal_vertical_padding">
 
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/img_preview"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="@dimen/gallery_image_preview_size"
+                android:layout_height="@dimen/gallery_image_preview_size"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="16dp"
                 custom:placeholderImage="@mipmap/ic_launcher"
                 custom:placeholderImageScaleType="centerCrop"
-                tools:src="@mipmap/ic_launcher"
-                />
+                tools:src="@mipmap/ic_launcher"/>
 
             <TextView
                 android:id="@+id/txt_publish_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                tools:text="20.06.2017"
-                />
+                android:textSize="@dimen/text_size_small"
+                tools:text="20.06.2017"/>
 
             <TextView
                 android:id="@+id/txt_title"
@@ -43,9 +46,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt_publish_date"
                 android:layout_toRightOf="@id/img_preview"
-                android:textSize="30sp"
-                tools:text="Sample title"
-                />
+                android:textSize="@dimen/text_size_normal"
+                tools:text="Sample title"/>
 
             <TextView
                 android:id="@+id/txt_author"
@@ -53,8 +55,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt_title"
                 android:layout_toRightOf="@id/img_preview"
-                tools:text="Author name/nick"
-                />
+                android:textSize="@dimen/text_size_small"
+                tools:text="Author name/nick"/>
 
             <TextView
                 android:id="@+id/txt_tags"
@@ -62,10 +64,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt_author"
                 android:layout_toRightOf="@id/img_preview"
-                tools:text="kittens cats"
-                />
-
+                android:textSize="@dimen/text_size_small"
+                tools:text="kittens cats"/>
         </RelativeLayout>
     </android.support.v7.widget.CardView>
-
 </FrameLayout>
